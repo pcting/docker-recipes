@@ -55,7 +55,7 @@ RUN mv /tmp/hadoop-etc/* /opt/hadoop/etc/hadoop/
 RUN su -l -c 'mkdir -p /home/hduser/hdfs-data/namenode /home/hduser/hdfs-data/datanode && hdfs namenode -format' hduser
 
 # Expose SSHD
-EXPOSE 22
+# EXPOSE 22
 
 # Expose YARN
 EXPOSE 8042 8088
