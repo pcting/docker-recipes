@@ -7,7 +7,7 @@ Example docker run command:
 
         mkdir -p /tmp/docker-hadoop-data/ /tmp/docker-hadoop-logs/ && \
         docker run -t -i -rm \
-          -e "AUTHORIZED_SSH_PUBLIC_KEY=$(cat ~/.ssh/id_rsa.pub)"
+          -e "AUTHORIZED_SSH_PUBLIC_KEY=$(cat ~/.ssh/id_rsa.pub)" \
           -v /tmp/docker-hadoop-data/:/home/hduser/hdfs-data/ \
           -v /tmp/docker-hadoop-logs/:/opt/hadoop/logs/ \
           -p 22:22 -p 2181:2181 -p 39534:39534 -p 9000:9000 \
