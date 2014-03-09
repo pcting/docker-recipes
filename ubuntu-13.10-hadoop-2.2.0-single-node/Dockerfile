@@ -24,11 +24,13 @@ RUN wget -q 'http://apache.cs.utah.edu/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.t
 
 # Setup system user and group to own and run Hadoop
 RUN addgroup hadoop && adduser --ingroup hadoop hduser
+RUN usermod -a -G hadoop zookeeper
 
 # Setup SSH keys for Hadoop
 RUN su -l -c 'ssh-keygen -t rsa -f /home/hduser/.ssh/id_rsa -P ""' hduser && \
   cat /home/hduser/.ssh/id_rsa.pub | su -l -c 'tee -a /home/hduser/.ssh/authorized_keys' hduser
 ADD config/ssh-config /home/hduser/.ssh/config
+RUN chmod 600 /home/hduser/.ssh/config
 
 # Fix Ubuntu 13.10 SSH daemon problem with docker: http://docs.docker.io/en/latest/examples/running_ssh_service/
 RUN sed -ri 's/session[[:blank:]]+required[[:blank:]]+pam_loginuid.so/session optional pam_loginuid.so/g' /etc/pam.d/sshd
@@ -51,17 +53,26 @@ ADD config/hdfs-site.xml /tmp/hadoop-etc/hdfs-site.xml
 
 RUN mv /tmp/hadoop-etc/* /opt/hadoop/etc/hadoop/
 
-# Create and format HDFS directories
-RUN su -l -c 'mkdir -p /home/hduser/hdfs-data/namenode /home/hduser/hdfs-data/datanode && hdfs namenode -format' hduser
-
 # Expose SSHD
-# EXPOSE 22
+EXPOSE 22
 
-# Expose YARN
-EXPOSE 8042 8088
+# QuorumPeerMain (Zookeeper)
+EXPOSE 2181 39534
 
-# Expose HDFS
-EXPOSE 9000 50070 50075 50090
+# NameNode (HDFS)
+EXPOSE 9000 50070
+
+# DataNode
+EXPOSE 50010 50020 50075
+
+# SecondaryNameNode
+EXPOSE 50090
+
+# ResourceManager
+EXPOSE 8030 8031 8032 8033 8088
+
+# NodeManager
+EXPOSE 8040 8042 13562 47784
 
 # Create start script
 ADD config/run-hadoop.sh /root/run-hadoop.sh

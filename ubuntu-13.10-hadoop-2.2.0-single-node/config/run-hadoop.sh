@@ -2,6 +2,12 @@
 
 set -x
 
+# append ssh public key to authorized_keys file
+echo $AUTHORIZED_SSH_PUBLIC_KEY >> /home/hduser/.ssh/authorized_keys
+
+# format the namenode if it's not already done
+su -l -c 'mkdir -p /home/hduser/hdfs-data/namenode /home/hduser/hdfs-data/datanode && hdfs namenode -format -nonInteractive' hduser
+
 # start ssh daemon
 service ssh start
 
@@ -12,10 +18,10 @@ service zookeeper start
 rm -fr /opt/hadoop/logs/*
 
 # start YARN
-su -l -c "start-yarn.sh" hduser
+su -l -c 'start-yarn.sh' hduser
 
 # start HDFS
-su -l -c "start-dfs.sh" hduser
+su -l -c 'start-dfs.sh' hduser
 
 sleep 1
 
