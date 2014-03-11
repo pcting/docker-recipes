@@ -1,7 +1,15 @@
-Yet another Hadoop docker image. Here's some details of what this image has:
+Yet another Hadoop docker image. Here are some of the features:
 
- * Ubuntu 13.10 amd64
- * Hadoop 2.2.0
+ * Use environment variable AUTHORIZED_SSH_PUBLIC_KEY to inject your
+   public key into the OpenSSH Server running in the container.
+ * Multiple volumes can be mounted to persist HDFS data and logs.
+ * Ports can be exposed to access Yarn, MapReduce, OpenSSH Server, and
+   Zookeeper.
+ * Based off of Ubuntu 13.10 amd64
+
+Listed below are the services that are brought up in the container:
+
+ * Hadoop 2.2.0 (YARN and HDFS)
  * OpenSSH Server
  * Zookeeper
 
