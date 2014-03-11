@@ -22,6 +22,9 @@ RUN apt-get install -y openssh-server zookeeperd
 # Download Hadoop
 RUN wget -q 'http://apache.cs.utah.edu/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz'
 
+# Install util packages
+RUN apt-get install -y rsync curl
+
 # Setup system user and group to own and run Hadoop
 RUN addgroup hadoop && adduser --ingroup hadoop hduser
 RUN usermod -a -G hadoop zookeeper
@@ -62,17 +65,20 @@ EXPOSE 2181 39534
 # NameNode (HDFS)
 EXPOSE 9000 50070
 
-# DataNode
+# DataNode (HDFS)
 EXPOSE 50010 50020 50075
 
-# SecondaryNameNode
+# SecondaryNameNode (HDFS)
 EXPOSE 50090
 
-# ResourceManager
+# ResourceManager (YARN)
 EXPOSE 8030 8031 8032 8033 8088
 
-# NodeManager
+# NodeManager (YARN)
 EXPOSE 8040 8042 13562 47784
+
+# JobHistoryServer
+EXPOSE 10020 19888
 
 # Create start script
 ADD config/run-hadoop.sh /root/run-hadoop.sh

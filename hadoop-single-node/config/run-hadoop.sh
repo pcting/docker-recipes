@@ -23,6 +23,9 @@ su -l -c 'start-yarn.sh' hduser
 # start HDFS
 su -l -c 'start-dfs.sh' hduser
 
+
+su -l -c '$HADOOP_PREFIX/sbin/mr-jobhistory-daemon.sh start historyserver --config $HADOOP_CONF_DIR' hduser
+
 sleep 1
 
 # tail log directory
