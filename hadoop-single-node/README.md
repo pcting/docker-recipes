@@ -1,6 +1,6 @@
 Yet another Hadoop docker image. Here are some of the features:
 
- * Use environment variable AUTHORIZED_SSH_PUBLIC_KEY to inject your
+ * Use environment variable AUTHORIZED\_SSH\_PUBLIC\_KEY to inject your
    public key into the OpenSSH Server running in the container.
  * Multiple volumes can be mounted to persist HDFS data and logs.
  * Ports can be exposed to access Yarn, MapReduce, OpenSSH Server, and
