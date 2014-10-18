@@ -34,4 +34,8 @@ su -l -c 'hadoop fs -mkdir -p hdfs:///tmp/hadoop-mapred/mapred/system' hdfs
 su -l -c 'hadoop fs -chown -R mapred:hadoop hdfs:///tmp/hadoop-mapred' hdfs
 service hadoop-0.20-mapreduce-jobtracker start
 
+# Setup Impala HDFS directories
+su -l -c 'hadoop fs -mkdir -p hdfs:///impala' hdfs
+su -l -c 'hadoop fs -chown impala:hdfs hdfs:///impala' hdfs
+
 /bin/bash
