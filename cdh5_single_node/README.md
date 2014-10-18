@@ -21,6 +21,7 @@ Some Useful Web Interfaces:
 * [Impala Web Interface](http://hadoop-container.local:25000/)
 * [Impala State Store Web Interface](http://hadoop-container.local:25010/)
 * [Impala State Store Web Interface](http://hadoop-container.local:25010/)
+* [Impala Catalog Web Interface](http://hadoop-container.local:25020/)
 * [Llama Web Interface](http://hadoop-container.local:15001/)
 * [HDFS Data Node Web Interface](http://hadoop-container.local:50075/)
 * [HDFS Name Node Web Interface](http://hadoop-container.local:50070/)

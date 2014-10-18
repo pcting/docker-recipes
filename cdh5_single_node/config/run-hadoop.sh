@@ -25,6 +25,7 @@ service llama start
 
 # start Impala
 service impala-state-store start
+service impala-catalog start
 service impala-server start
 
 # hadoop 0.20 Job Tracker

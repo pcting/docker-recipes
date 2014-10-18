@@ -21,12 +21,16 @@
     <value>0.0.0.0</value>
   </property>
   <property>
-    <name>dfs.client.read.shortcircuit</name>
+    <name>dfs.domain.socket.path</name>
+    <value>/var/lib/hadoop-hdfs/dn_socket</value>
+  </property>
+  <property>
+    <name>dfs.datanode.hdfs-blocks-metadata.enabled</name>
     <value>true</value>
   </property>
   <property>
-    <name>dfs.domain.socket.path</name>
-    <value>/var/run/hdfs-sockets/dn</value>
+    <name>dfs.client.read.shortcircuit</name>
+    <value>true</value>
   </property>
   <property>
     <name>dfs.client.file-block-storage-locations.timeout.millis</name>

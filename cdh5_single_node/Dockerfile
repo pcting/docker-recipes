@@ -33,6 +33,7 @@ RUN apt-get install -y hadoop-hdfs-datanode \
                        llama \
                        llama-master \
                        impala \
+                       impala-catalog \
                        impala-server \
                        impala-state-store \
                        impala-shell
