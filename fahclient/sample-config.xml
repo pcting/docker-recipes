@@ -1,0 +1,22 @@
+<config>
+  <!-- Folding Slot Configuration -->
+  <gpu value=""/>
+
+  <!-- Slot Control -->
+  <power value=""/>
+
+  <!-- User Information -->
+  <fold-anon value="true"/>
+  <passkey value=""/>
+  <user value=""/>
+  <team value=""/>
+
+  <!-- HTTP Server -->
+  <allow value=""/>
+
+  <!-- Web Server -->
+  <web-allow value=""/>
+
+  <!-- Folding Slots -->
+  <slot id="0" type="CPU"/>
+</config>
